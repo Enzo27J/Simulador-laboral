@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Módulo de Citas Médicas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container py-4">
+    <h2 class="text-center mb-4">🩺 Módulo de Citas Médicas</h2>
+
+    <div class="card mb-4">
+      <div class="card-header bg-primary text-white">Paciente</div>
+      <div class="card-body">
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label class="form-label">Cédula</label>
+            <input type="text" id="cedula" class="form-control" placeholder="#########" />
+          </div>
+          <div class="col-md-6 d-flex align-items-end">
+            <button id="buscarPacienteBtn" class="btn btn-secondary me-2">Buscar</button>
+            <button id="nuevoPacienteBtn" class="btn btn-success">Nuevo Paciente</button>
+          </div>
+        </div>
+
+        <div id="datosPaciente" class="row g-3 d-none">
+          <div class="col-md-6">
+            <label class="form-label">Nombre</label>
+            <input type="text" id="nombre" class="form-control" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Fecha de nacimiento</label>
+            <input type="date" id="fechaNacimiento" class="form-control" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Correo</label>
+            <input type="email" id="correo" class="form-control" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Teléfono</label>
+            <input type="tel" id="telefono" class="form-control" />
+          </div>
+          <div class="col-md-12">
+            <label class="form-label">Dirección</label>
+            <input type="text" id="direccion" class="form-control" placeholder="Dirección (Costa Rica)" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-4 d-none" id="crearCitaCard">
+      <div class="card-header bg-success text-white">Crear Cita</div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">Doctor</label>
+            <select id="doctor" class="form-select"></select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Fecha</label>
+            <input type="date" id="fecha" class="form-control" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Síntomas</label>
+            <input type="text" id="sintomas" class="form-control" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Alergias</label>
+            <input type="text" id="alergias" class="form-control" placeholder="Medicamentos (si aplica)" />
+          </div>
+          <div class="col-md-12">
+            <label class="form-label">Centro Médico (Provincia)</label>
+            <select id="centro" class="form-select">
+              <option value="San José">San José</option>
+              <option value="Alajuela">Alajuela</option>
+              <option value="Cartago">Cartago</option>
+              <option value="Heredia">Heredia</option>
+              <option value="Guanacaste">Guanacaste</option>
+              <option value="Puntarenas">Puntarenas</option>
+              <option value="Limón">Limón</option>
+            </select>
+          </div>
+          <div class="col-md-12 text-end">
+            <button id="crearCitaBtn" class="btn btn-primary">Crear Cita</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card d-none" id="citasPacienteCard">
+      <div class="card-header bg-danger text-white">Cancelar Cita</div>
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Doctor</th>
+              <th>Fecha</th>
+              <th>Centro</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="listaCitas"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/citas.js"></script>
+</body>
+</html>
