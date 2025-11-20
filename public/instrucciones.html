@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Instrucciones de Atención</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <style>
+    body {
+      background: #f4f6f9;
+      font-family: "Inter", sans-serif;
+      display: flex;
+    }
+
+    /* === SIDEBAR === */
+    .sidebar {
+      width: 260px;
+      background: #ffffff;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      padding: 30px 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.08);
+    }
+
+    .sidebar h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #333;
+      font-size: 15px;
+      transition: 0.2s;
+    }
+
+    .sidebar a:hover {
+      background: #e9f2ff;
+      color: #0d6efd;
+    }
+
+    .sidebar i {
+      margin-right: 8px;
+    }
+
+    /* === CONTENT === */
+    .content {
+      margin-left: 280px;
+      padding: 40px;
+      width: calc(100% - 280px);
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Cards */
+    .section-card {
+      background: white;
+      border-radius: 14px;
+      padding: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+      margin-bottom: 25px;
+    }
+
+    .section-card h3 {
+      font-weight: 700;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    ul li { margin-bottom: 6px; }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========== SIDEBAR / ÍNDICE ========== -->
+  <div class="sidebar">
+    <h2><i class="bi bi-journal-text"></i> Instrucciones</h2>
+
+    <a href="#pasos"><i class="bi bi-list-check"></i>Pasos del proceso</a>
+    <a href="#escenarios"><i class="bi bi-people"></i>Protocolos</a>
+    <a href="#molesto"><i class="bi bi-exclamation-triangle"></i>Cliente molesto</a>
+    <a href="#habla-mucho"><i class="bi bi-chat-left-text"></i>Paciente habla mucho</a>
+    <a href="#indeciso"><i class="bi bi-question-circle"></i>Paciente indeciso</a>
+    <a href="#maltrato"><i class="bi bi-emoji-frown"></i>Molesto por mal trato</a>
+  </div>
+
+  <!-- ========== CONTENIDO PRINCIPAL ========== -->
+  <div class="content">
+
+    <h1 class="mb-4 text-primary">
+      <i class="bi bi-info-circle"></i> Guía de Atención al Paciente
+    </h1>
+
+    <!-- TAB NAV -->
+    <ul class="nav nav-tabs mb-4" id="mainTabs">
+      <li class="nav-item">
+        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-pasos">
+          <i class="bi bi-list-ol"></i> Pasos del proceso
+        </button>
+      </li>
+
+      <li class="nav-item">
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-escenarios">
+          <i class="bi bi-people-fill"></i> Protocolos por situación
+        </button>
+      </li>
+    </ul>
+
+    <!-- TAB CONTENT -->
+    <div class="tab-content">
+
+      <!-- ========== TAB: PASOS ========== -->
+      <div class="tab-pane fade show active" id="tab-pasos">
+
+        <div id="pasos" class="section-card">
+          <h3><i class="bi bi-1-circle text-primary"></i> Paso 1: Verificación de datos personales</h3>
+          <ul>
+            <li>Saludar con cordialidad.</li>
+            <li>Solicitar nombre completo y número de identidad.</li>
+            <li>Confirmar teléfono y correo.</li>
+            <li>Verificar dirección y datos adicionales.</li>
+            <li>Actualizar cualquier información cambiada.</li>
+          </ul>
+        </div>
+
+        <div class="section-card">
+          <h3><i class="bi bi-2-circle text-primary"></i> Paso 2: Identificación del trámite</h3>
+          <ul>
+            <li>Preguntar si desea agendar, cancelar o modificar una cita.</li>
+            <li>Si cancela/modifica, solicitar fecha y hora de la cita actual.</li>
+          </ul>
+        </div>
+
+        <div class="section-card">
+          <h3><i class="bi bi-3-circle text-primary"></i> Paso 3: Agendar nueva cita</h3>
+          <ul>
+            <li>Consultar disponibilidad en sistema.</li>
+            <li>Preguntar preferencias de fecha/hora con opciones limitadas.</li>
+            <li>Confirmar y registrar la cita seleccionada.</li>
+          </ul>
+        </div>
+
+        <div class="section-card">
+          <h3><i class="bi bi-4-circle text-primary"></i> Paso 4: Cancelar o modificar cita</h3>
+          <ul>
+            <li>Confirmar los detalles de la cita.</li>
+            <li>Registrar cancelación o cambio.</li>
+            <li>Si modifica, repetir proceso del paso 3.</li>
+          </ul>
+        </div>
+
+        <div class="section-card">
+          <h3><i class="bi bi-5-circle text-primary"></i> Paso 5: Confirmación final</h3>
+          <ul>
+            <li>Repetir los detalles de la cita.</li>
+            <li>Indicar que recibirá confirmación por correo/SMS.</li>
+            <li>Agradecer y despedirse.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- ========== TAB: ESCENARIOS ========== -->
+      <div class="tab-pane fade" id="tab-escenarios">
+
+        <div id="molesto" class="section-card">
+          <h3><i class="bi bi-exclamation-triangle text-danger"></i> Cliente molesto por errores</h3>
+          <ul>
+            <li>Escuchar sin interrumpir.</li>
+            <li>Mostrar empatía y reconocer la molestia.</li>
+            <li>Revisar el sistema con calma.</li>
+            <li>Ofrecer una solución inmediata.</li>
+            <li>Proponer alternativas para compensar la molestia.</li>
+            <li>Asegurar seguimiento por correo o llamada.</li>
+          </ul>
+        </div>
+
+        <div id="habla-mucho" class="section-card">
+          <h3><i class="bi bi-chat-left-text text-secondary"></i> Paciente que habla demasiado</h3>
+          <ul>
+            <li>Escuchar brevemente y reconocer lo dicho.</li>
+            <li>Usar frases guiadoras para volver al tema.</li>
+            <li>Establecer límites amables para optimizar tiempo.</li>
+            <li>Ofrecer vías alternativas para conversar.</li>
+            <li>Cerrar la gestión con amabilidad.</li>
+          </ul>
+        </div>
+
+        <div id="indeciso" class="section-card">
+          <h3><i class="bi bi-question-circle text-warning"></i> Paciente indeciso</h3>
+          <ul>
+            <li>Preguntar opciones concretas (mañana/tarde).</li>
+            <li>Limitar a 2–3 opciones.</li>
+            <li>Explicar disponibilidad y consecuencias de no agendar.</li>
+            <li>Ofrecer cita provisional.</li>
+            <li>Usar preguntas cerradas para dirigir la decisión.</li>
+          </ul>
+        </div>
+
+        <div id="maltrato" class="section-card">
+          <h3><i class="bi bi-emoji-frown text-primary"></i> Molesto por mal trato recibido</h3>
+          <ul>
+            <li>Escuchar sin interrumpir.</li>
+            <li>Ofrecer disculpas sinceras.</li>
+            <li>Mostrar empatía real.</li>
+            <li>Solicitar detalles sin presionar.</li>
+            <li>Ofrecer atención personalizada.</li>
+            <li>Preguntar si desea mantener o reprogramar la cita.</li>
+            <li>Reiterar compromiso con el buen servicio.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

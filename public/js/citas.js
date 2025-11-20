@@ -1,14 +1,28 @@
 $(document).ready(() => {
   let pacienteActual = null;
 
-  // Cargar doctores disponibles al iniciar
+  // ========== CRONÓMETRO ==========
+  let segundos = 0;
+  let intervalo = setInterval(() => {
+    segundos++;
+    const h = String(Math.floor(segundos / 3600)).padStart(2, "0");
+    const m = String(Math.floor((segundos % 3600) / 60)).padStart(2, "0");
+    const s = String(segundos % 60).padStart(2, "0");
+    $("#cronometro").text(`Tiempo en sesión: ${h}:${m}:${s}`);
+  }, 1000);
+
+  // Botón salir
+  $("#salirBtn").click(() => window.location.href = "/index.html");
+
+  // Botón instrucciones
+  $("#btnInstrucciones").click(() => window.open("instrucciones.html", "_blank"));
+
+  // Cargar doctores
   $.get("/api/doctores", data => {
-    data.forEach(doc => {
-      $("#doctor").append(`<option value="${doc.cedula}">${doc.nombre}</option>`);
-    });
+    data.forEach(doc => $("#doctor").append(`<option value="${doc.cedula}">${doc.nombre}</option>`));
   });
 
-  // Buscar paciente por cédula
+  // Buscar paciente
   $("#buscarPacienteBtn").click(() => {
     const cedula = $("#cedula").val().trim();
     if (!cedula) return alert("Ingrese una cédula");
@@ -22,12 +36,9 @@ $(document).ready(() => {
     });
   });
 
-  // Crear nuevo paciente
+  // Nuevo paciente
   $("#nuevoPacienteBtn").click(() => {
-    pacienteActual = {
-      nuevo: true,
-      cedula: $("#cedula").val().trim()
-    };
+    pacienteActual = { nuevo: true, cedula: $("#cedula").val().trim() };
     mostrarDatosPaciente();
   });
 
@@ -39,7 +50,8 @@ $(document).ready(() => {
       paciente: pacienteActual,
       doctorCedula: $("#doctor").val(),
       fecha: $("#fecha").val(),
-      sintomas: $("#sintomas").val(),
+      tipoAtencion: $("#tipoAtencion").val(),
+      descripcion: $("#descripcion").val(),
       alergias: $("#alergias").val(),
       centro: $("#centro").val()
     };
@@ -67,6 +79,19 @@ $(document).ready(() => {
         cargarCitas();
       }
     });
+  });
+
+  // Finalizar simulación
+  $("#finalizarSimulacionBtn").click(() => {
+    clearInterval(intervalo); // detener cronómetro
+    const h = String(Math.floor(segundos / 3600)).padStart(2, "0");
+    const m = String(Math.floor((segundos % 3600) / 60)).padStart(2, "0");
+    const s = String(segundos % 60).padStart(2, "0");
+
+    alert(`Simulación finalizada. Tiempo total: ${h}:${m}:${s}`);
+    // Aquí se puede enviar `segundos` a un profesor en el futuro
+
+    window.location.href = "/index.html"; // redirigir al login
   });
 
   function mostrarDatosPaciente() {

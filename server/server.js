@@ -17,15 +17,15 @@ let pacientes = generarPacientes(40);
 let doctores = generarDoctores(20);
 let citas = [];
 
-console.log("👥 Pacientes generados:");
+console.log("Pacientes generados:");
 console.table(pacientes.slice(0, 5)); // muestra los primeros 5
 
-console.log("👨‍⚕️ Doctores generados:");
+console.log("Doctores generados:");
 console.table(doctores.slice(0, 5)); // muestra los primeros 5
 
 const USERS = [
-  { username: "profesor", password: "admin123", role: "profesor" },
-  { username: "estudiante", password: "demo123", role: "estudiante" }
+  { username: "profesor", password: "admin2020", role: "profesor" },
+  { username: "estudiante", password: "itp2025", role: "estudiante" }
 ];
 
 // --- LOGIN ---

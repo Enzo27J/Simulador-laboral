@@ -4,109 +4,209 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Módulo de Citas Médicas</title>
+
+  <link rel="icon" type="image/png" href="img/logoITP.png">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <!-- Tus estilos personalizados -->
+  <link rel="stylesheet" href="css/estilos.css">
 </head>
-<body class="bg-light">
-  <div class="container py-4">
-    <h2 class="text-center mb-4">🩺 Módulo de Citas Médicas</h2>
 
-    <div class="card mb-4">
-      <div class="card-header bg-primary text-white">Paciente</div>
+<body>
+
+  <!-- HEADER -->
+  <header class="header-bar">
+    <h1 class="titulo-header">Simulador Laboral ITP</h1>
+
+    <div class="header-right">
+      <nav>
+        <a href="#" class="header-link">Acerca</a>
+        <a href="#" class="header-link">Contáctenos</a>
+      </nav>
+      <img src="img/logoITP.png" alt="Logo ITP">
+    </div>
+  </header>
+
+  <!-- CONTENIDO -->
+  <main class="container mt-section">
+    <div class="card-modern mx-auto" style="max-width: 1100px;">
       <div class="card-body">
-        <div class="row mb-3">
-          <div class="col-md-6">
-            <label class="form-label">Cédula</label>
-            <input type="text" id="cedula" class="form-control" placeholder="#########" />
+        <div class="d-flex justify-content-between align-items-start mb-3">
+          <div>
+            <h2 class="mb-1">🩺 Módulo de Citas Médicas</h2>
+            <p class="text-muted mb-0">Simula la toma de datos y la gestión de citas médicas.</p>
           </div>
-          <div class="col-md-6 d-flex align-items-end">
-            <button id="buscarPacienteBtn" class="btn btn-secondary me-2">Buscar</button>
-            <button id="nuevoPacienteBtn" class="btn btn-success">Nuevo Paciente</button>
+
+          <!-- CRONÓMETRO -->
+          <div id="cronometro" class="mt-2 fw-bold text-primary" style="font-size: 1.2rem;">
+            Tiempo en sesión: 00:00:00
+          </div>
+
+          <div class="ms-3 d-flex gap-2">
+            <button id="btnInstrucciones" class="btn btn-info">
+              <i class="bi bi-journal-text"></i> Instrucciones
+            </button>
+
+            <button id="salirBtn" class="btn btn-outline-secondary">
+              Salir
+            </button>
           </div>
         </div>
 
-        <div id="datosPaciente" class="row g-3 d-none">
-          <div class="col-md-6">
-            <label class="form-label">Nombre</label>
-            <input type="text" id="nombre" class="form-control" />
-          </div>
-          <div class="col-md-6">
-            <label class="form-label">Fecha de nacimiento</label>
-            <input type="date" id="fechaNacimiento" class="form-control" />
-          </div>
-          <div class="col-md-6">
-            <label class="form-label">Correo</label>
-            <input type="email" id="correo" class="form-control" />
-          </div>
-          <div class="col-md-6">
-            <label class="form-label">Teléfono</label>
-            <input type="tel" id="telefono" class="form-control" />
-          </div>
-          <div class="col-md-12">
-            <label class="form-label">Dirección</label>
-            <input type="text" id="direccion" class="form-control" placeholder="Dirección (Costa Rica)" />
-          </div>
-        </div>
-      </div>
-    </div>
+        <hr>
 
-    <div class="card mb-4 d-none" id="crearCitaCard">
-      <div class="card-header bg-success text-white">Crear Cita</div>
-      <div class="card-body">
-        <div class="row g-3">
-          <div class="col-md-6">
-            <label class="form-label">Doctor</label>
-            <select id="doctor" class="form-select"></select>
-          </div>
-          <div class="col-md-6">
-            <label class="form-label">Fecha</label>
-            <input type="date" id="fecha" class="form-control" />
-          </div>
-          <div class="col-md-6">
-            <label class="form-label">Síntomas</label>
-            <input type="text" id="sintomas" class="form-control" />
-          </div>
-          <div class="col-md-6">
-            <label class="form-label">Alergias</label>
-            <input type="text" id="alergias" class="form-control" placeholder="Medicamentos (si aplica)" />
-          </div>
-          <div class="col-md-12">
-            <label class="form-label">Centro Médico (Provincia)</label>
-            <select id="centro" class="form-select">
-              <option value="San José">San José</option>
-              <option value="Alajuela">Alajuela</option>
-              <option value="Cartago">Cartago</option>
-              <option value="Heredia">Heredia</option>
-              <option value="Guanacaste">Guanacaste</option>
-              <option value="Puntarenas">Puntarenas</option>
-              <option value="Limón">Limón</option>
-            </select>
-          </div>
-          <div class="col-md-12 text-end">
-            <button id="crearCitaBtn" class="btn btn-primary">Crear Cita</button>
-          </div>
-        </div>
-      </div>
-    </div>
+        <!-- PACIENTE -->
+        <section class="mb-4">
+          <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">Paciente</div>
+            <div class="card-body">
 
-    <div class="card d-none" id="citasPacienteCard">
-      <div class="card-header bg-danger text-white">Cancelar Cita</div>
-      <div class="card-body">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Doctor</th>
-              <th>Fecha</th>
-              <th>Centro</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody id="listaCitas"></tbody>
-        </table>
+              <div class="row g-3 align-items-end">
+                <div class="col-md-5">
+                  <label class="form-label">Cédula</label>
+                  <div class="input-icon">
+                    <i class="bi bi-card-text"></i>
+                    <input type="text" id="cedula" class="form-control" placeholder="#########" />
+                  </div>
+                </div>
+
+                <div class="col-md-7 d-flex gap-2">
+                  <button id="buscarPacienteBtn" class="btn btn-secondary align-self-end">Buscar</button>
+                  <button id="nuevoPacienteBtn" class="btn btn-success align-self-end">Nuevo Paciente</button>
+                </div>
+              </div>
+
+              <div id="datosPaciente" class="row g-3 mt-3 d-none">
+                <div class="col-md-6">
+                  <label class="form-label">Nombre</label>
+                  <input type="text" id="nombre" class="form-control" />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Fecha de nacimiento</label>
+                  <input type="date" id="fechaNacimiento" class="form-control" />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Correo</label>
+                  <input type="email" id="correo" class="form-control" />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Teléfono</label>
+                  <input type="tel" id="telefono" class="form-control" />
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label">Dirección</label>
+                  <input type="text" id="direccion" class="form-control" placeholder="Dirección (Costa Rica)" />
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- CREAR CITA -->
+        <section id="crearCitaCard" class="mb-4 d-none">
+          <div class="card shadow-sm">
+            <div class="card-header bg-success text-white">Crear Cita</div>
+            <div class="card-body">
+              <div class="row g-3">
+
+                <div class="col-md-6">
+                  <label class="form-label">Doctor</label>
+                  <select id="doctor" class="form-select"></select>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Fecha</label>
+                  <input type="date" id="fecha" class="form-control" />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Tipo de atención</label>
+                  <select id="tipoAtencion" class="form-select">
+                    <option value="Enfermedad">Enfermedad</option>
+                    <option value="Accidente">Accidente</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Descripción de síntomas o accidente</label>
+                  <textarea id="descripcion" class="form-control" rows="3"></textarea>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Alergias</label>
+                  <input type="text" id="alergias" class="form-control" placeholder="Medicamentos (si aplica)" />
+                </div>
+
+                <div class="col-md-12">
+                  <label class="form-label">Centro Médico (Provincia)</label>
+                  <select id="centro" class="form-select">
+                    <option value="San José">San José</option>
+                    <option value="Alajuela">Alajuela</option>
+                    <option value="Cartago">Cartago</option>
+                    <option value="Heredia">Heredia</option>
+                    <option value="Guanacaste">Guanacaste</option>
+                    <option value="Puntarenas">Puntarenas</option>
+                    <option value="Limón">Limón</option>
+                  </select>
+                </div>
+
+                <div class="col-12 text-end">
+                  <button id="crearCitaBtn" class="btn btn-primary">Crear Cita</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- LISTA DE CITAS -->
+        <section id="citasPacienteCard" class="d-none">
+          <div class="card shadow-sm">
+            <div class="card-header bg-danger text-white">Cancelar Cita</div>
+            <div class="card-body p-0">
+              <div class="table-responsive">
+                <table class="table table-striped mb-0">
+                  <thead>
+                    <tr>
+                      <th>Doctor</th>
+                      <th>Fecha</th>
+                      <th>Centro</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody id="listaCitas"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- BOTÓN FINALIZAR SIMULACIÓN -->
+        <div class="text-center mt-4 mb-3">
+          <button id="finalizarSimulacionBtn" class="btn btn-warning btn-lg">
+            <i class="bi bi-flag-fill"></i> Finalizar Simulación
+          </button>
+        </div>
+
       </div>
     </div>
-  </div>
+  </main>
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="js/citas.js"></script>
+
 </body>
 </html>

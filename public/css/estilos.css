@@ -1,0 +1,216 @@
+/* ===== Estilos globales ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root{
+  --overlay-rgba: rgba(255, 255, 255, 0.60);
+  --primary: #2563eb;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Fondo + overlay */
+body{
+  background-image: url("../img/fondo.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* overlay del fondo */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.20);
+  z-index: 0;
+}
+
+/* Asegurar que el contenido esté por encima del overlay */
+.header-bar,
+.container,
+.card,
+.footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Header ===== */
+.header-bar {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 5px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  backdrop-filter: blur(6px);
+}
+
+.titulo-header {
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+/* Menú derecho */
+.header-right nav {
+  display: flex;
+  gap: 16px;
+}
+
+.header-link {
+  color: #003366;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.header-link:hover {
+  text-decoration: underline;
+}
+
+/* Logo */
+.header-right img {
+  height: clamp(50px, 7vw, 95px);
+  display: block;
+}
+
+/* ===== Tarjetas y layout ===== */
+.container {
+  padding-top: 36px;
+  padding-bottom: 36px;
+}
+
+.card {
+  border-radius: 12px;
+  border: none;
+  padding: 12px;
+}
+
+.card.shadow {
+  box-shadow: 0 6px 18px rgba(17,24,39,0.06);
+}
+
+/* ===== Botones ===== */
+.btn-primary {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+
+.btn-outline-primary {
+  color: var(--primary) !important;
+  border-color: var(--primary) !important;
+  border-radius: 10px;
+}
+
+/* Inputs */
+.form-control {
+  border-radius: 10px;
+}
+
+/* ===== LOGIN / FORMULARIOS MODERNOS ===== */
+
+/* Animación suave */
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Tarjeta moderna */
+.card-modern {
+  border-radius: 18px;
+  padding: 25px;
+  border: 1px solid rgba(255,255,255,0.45);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+}
+
+/* Inputs con icono */
+.input-icon {
+  position: relative;
+}
+
+.input-icon i {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #64748b;
+  font-size: 18px;
+}
+
+.input-icon input {
+  padding-left: 40px !important;
+}
+
+/* Botón moderno */
+.btn-login {
+  background: var(--primary);
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.btn-login:hover {
+  background: #1e4fc4;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+}
+
+/* Centrado del formulario */
+.centrar-pagina {
+  min-height: calc(100vh - 100px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: flex-start;
+  padding-top: 100px; 
+}
+
+
+/* ===== Responsivo ===== */
+@media (max-width: 576px) {
+  .titulo-header { font-size: 22px; }
+
+  .header-bar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .header-right {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .header-right img {
+    height: 50px;
+  }
+
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
